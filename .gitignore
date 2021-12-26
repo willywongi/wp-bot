@@ -1,0 +1,7 @@
+.DS_Store
+
+context/*.json
+log/*
+media/*
+
+.env
