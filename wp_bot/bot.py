@@ -5,7 +5,7 @@ import os
 import time
 from pathlib import Path
 from socket import timeout
-from urllib.error import HTTPError
+from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import urlopen
 
@@ -115,6 +115,8 @@ def bot(logger):
         try:
             data = invoke("getUpdates", offset=update_id)
         except timeout:
+            continue
+        except URLError:
             continue
         else:
             updates = data.get('result', ())
